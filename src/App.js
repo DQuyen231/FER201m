@@ -1,11 +1,37 @@
-import Contact from './component/Contact';
-// import PayMent from './component/Payment';
+import { Routes, Route } from "react-router-dom";
+import "./App.css";
+import { AuthContextProvider } from "./context/AuthContext";
+import Home from "./component/Home";
+import Loginpage from "./component/Loginpage";
+import Navigation from "./component/Navigation";
+import Register from "./component/Register";
+import Contact from "./component/Contact";
+import Payment from "./component/Payment";
 
+// import Login from "./gg_login/Login";
+// import Protected from "./Protect/protected";
 
 function App() {
+
   return (
-    <Contact />
-    // <PayMent />
+
+    <div className="App">
+      <AuthContextProvider> 
+        <Navigation />
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/loginpage" element={<Loginpage />}></Route>
+          <Route path="/register" element={<Register />}></Route>
+          <Route path="/contact" element={<Contact />}></Route>
+          <Route path="/payment" element={<Payment />}></Route>
+
+
+          {/* <Route path="/login" element={<Login />}></Route>
+          <Route path="/dashboard" element={<Protected><Dashboard /></Protected>}></Route> */}
+        </Routes>
+      </AuthContextProvider>
+
+    </div>
   );
 }
 
