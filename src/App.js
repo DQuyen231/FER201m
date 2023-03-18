@@ -7,6 +7,7 @@ import Navigation from "./component/Navigation";
 import Register from "./component/Register";
 import Contact from "./component/Contact";
 import Payment from "./component/Payment";
+import Footer from "./component/Footer";
 
 // import Login from "./gg_login/Login";
 // import Protected from "./Protect/protected";
@@ -29,6 +30,7 @@ function App() {
           {/* <Route path="/login" element={<Login />}></Route>
           <Route path="/dashboard" element={<Protected><Dashboard /></Protected>}></Route> */}
         </Routes>
+        <Footer />
       </AuthContextProvider>
 
     </div>
