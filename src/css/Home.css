@@ -1,29 +1,48 @@
  .image-gallery {
-    width: 100%;
-    height: 500px;
-    margin-top: 30px;
-  }
-  
-  .image-gallery-slide img {
-    width: 100%;
-    height: 500px;
-    object-fit: cover;
-  }
-  .home-container{
-    margin: -8px;
-    background-color: whitesmoke;
-  }
-  .body{
-    display: flex;
-    padding: 80px;
-    padding-left: 32rem;
-  }
-  .body2{
-    display: flex;
-  }
-  .description1{
-    margin-right: 30px;
-  }
-  .header2{
-    height: 10vh;
-  }
+   width: 100%;
+   height: 500px;
+   margin-top: 30px;
+ }
+
+ .image-gallery-slide img {
+   width: 100%;
+   height: 500px;
+   object-fit: cover;
+ }
+
+ .home-container {
+   margin: -8px;
+   background-color: whitesmoke;
+ }
+
+ .body {
+   display: flex;
+   padding: 80px;
+   padding-left: 32rem;
+ }
+
+ .body2 {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   grid-gap: 20px;
+   padding-left: 22rem;
+   padding-top: 3rem;
+   padding-bottom: 10rem;
+ }
+
+ .description1 {
+   margin-right: 30px;
+ }
+
+ .header2 {
+   height: 10vh;
+ }
+
+ .service1,
+ .service2,
+ .service3,
+ .service4 {
+   width: 25rem;
+   height: 20rem;
+   background-color: rgba(255, 255, 255, 0.8);
+ }
