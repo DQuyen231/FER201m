@@ -1,10 +1,20 @@
 .contactForm{
-  padding-left: 30rem;
+  margin-left: 20rem;
+  margin-top: 40px;
 }
 .contactInfo{
-  padding-left: 20rem;
+  margin-left: 20rem;
+  margin-top: 7rem;
 }
 
 .container{
   display: flex;
+  
+}
+.contact-img{
+  margin-left: 18rem;
+}
+.contact{
+  background-color: whitesmoke;
+  margin: -8px;
 }

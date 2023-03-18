@@ -3,13 +3,15 @@ import { UserAuth } from "../context/AuthContext";
 import { useFormik } from "formik";
 import * as Yup from 'yup'
 import '../css/ContactCSS.css'
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { Button, TextField, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
 import { Link } from "react-router-dom";
+import CarRentalTwoToneIcon from '@mui/icons-material/CarRentalTwoTone';
+import SendIcon from '@mui/icons-material/Send';
 
 export default function Contact() {
 
-    const {user} = UserAuth();
+    const { user } = UserAuth();
 
     const listOfType =
         [
@@ -46,21 +48,28 @@ export default function Contact() {
 
     return (
         <div className="contact">
-            <Typography variant="h2" sx={{ color: 'red', paddingTop: '60px', textAlign: 'center' }}>Contact Us</Typography>
-            <Typography sx={{ color: 'red', paddingTop: '10px', textAlign: 'center' }}>Hãy cho chúng tôi biết ý kiến của bạn bằng cách phản hồi hoặc liên hệ qua các thông tin của chúng tôi để giúp chúng tôi phát triển hơn trong tương lai</Typography>
+            <Typography variant="h2" sx={{ color: '#00000', paddingTop: '8rem', textAlign: 'center' }}>Self Driving Car</Typography>
+            <CarRentalTwoToneIcon sx={{fontSize:'70px', paddingLeft:'56rem', color:'#D8D8D8'}}/>
+            <Typography sx={{ color: '#525252', paddingTop: '10px', textAlign: 'center' }}>Hãy cho chúng tôi biết ý kiến của bạn bằng cách phản hồi hoặc liên hệ qua các thông tin của chúng tôi để giúp chúng tôi phát triển hơn trong tương lai</Typography>
+            <Box
+                className="contact-img"
+                width='70%'
+                height='60vh'
+                component='img' src='https://thuexehcm.vn/wp-content/uploads/2019/06/banner-image1-1024x554.jpg' />
             <div className="container">
 
                 {/* thông tin liên hệ */}
                 <div className="contactInfo">
+                    <Typography variant="h4">Contact Info</Typography><br/>
 
                     <Typography variant="h5">Address:</Typography>
-                    <Typography>99 Nguyễn Huệ, phường Bến Nghé, Quận 1, TP. Hồ Chí Minh</Typography><br />
+                    <Typography sx={{color:'#B4A5A5'}}>99 Nguyễn Huệ, phường Bến Nghé, Quận 1, TP. Hồ Chí Minh</Typography><br />
 
                     <Typography variant="h5">Phone:</Typography>
-                    <Typography>0123-456-789</Typography><br />
+                    <Typography sx={{color:'#B4A5A5'}}>0123-456-789</Typography><br />
 
                     <Typography variant="h5">Email:</Typography>
-                    <Typography>RentCar@gmail.com</Typography><br />
+                    <Typography sx={{color:'#B4A5A5'}}>RentCar@gmail.com</Typography><br />
 
                 </div>
 
@@ -68,10 +77,11 @@ export default function Contact() {
                 {/* Form gửi đơn liên hệ  */}
                 <div className="contactForm">
                     <form onSubmit={formik.handleSubmit}>
-                        <h2>Send Message</h2>
+                        <Typography sx={{textAlign:'center', paddingBottom:'20px'}} variant="h4">Contact Form</Typography>
 
                         <div className="inputBox">
                             <TextField
+                                sx={{width:'30rem'}}
                                 name="fullname"
                                 value={formik.values.fullname}
                                 onChange={formik.handleChange}
@@ -82,6 +92,7 @@ export default function Contact() {
                         </div><br />
                         <div className="inputBox">
                             <TextField
+                                sx={{width:'30rem'}}
                                 name="email"
                                 value={formik.values.email}
                                 onChange={formik.handleChange}
@@ -92,6 +103,7 @@ export default function Contact() {
                         </div><br />
                         <div className="inputBox">
                             <TextField
+                                sx={{width:'30rem'}}
                                 name="phone"
                                 value={formik.values.phone}
                                 onChange={formik.handleChange}
@@ -105,7 +117,7 @@ export default function Contact() {
                                 <InputLabel id="format-label">Choose one</InputLabel>
                                 <Select
 
-                                    style={{ width: 400 }}
+                                    style={{ width: '30rem' }}
                                     multiple={false}
                                     placeholder="type application"
                                     label="Choose type application"
@@ -132,6 +144,7 @@ export default function Contact() {
                         </div><br />
                         <div className="inputBox">
                             <TextField
+                                sx={{width:'30rem'}}
                                 name="text"
                                 value={formik.values.text}
                                 onChange={formik.handleChange}
@@ -142,9 +155,13 @@ export default function Contact() {
                                 helperText={formik.touched.text && formik.errors.text}
                             />
                         </div><br />
-      
-                        {user?.displayName ?  <Button type="submit">Send</Button> : <Button><Link to='/loginpage' style={{textDecoration:'none'}}>Send</Link></Button>}
-                    
+                        
+                        {
+                        user?.displayName ? <Button sx={{marginLeft:'13rem', marginBottom:'80px', background:'#E7B10A', color:'white'}} type="submit"><SendIcon sx={{paddingRight:'4px'}}/>Send</Button> 
+                        : 
+                        <Button sx={{marginLeft:'13rem',border:'1px solid black', marginBottom:'80px'}}><Link to='/loginpage' style={{ textDecoration: 'none' }}><SendIcon sx={{paddingRight:'4px'}}/>Send</Link></Button>
+                        }
+                        
                     </form>
                 </div>
             </div>
