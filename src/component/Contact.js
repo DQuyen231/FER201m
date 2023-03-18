@@ -48,8 +48,8 @@ export default function Contact() {
 
     return (
         <div className="contact">
-            <Typography variant="h2" sx={{ color: '#00000', paddingTop: '8rem', textAlign: 'center' }}>Self Driving Car</Typography>
-            <CarRentalTwoToneIcon sx={{fontSize:'70px', paddingLeft:'56rem', color:'#D8D8D8'}}/>
+            <Typography variant="h2" sx={{ color: '#537FE7', paddingTop: '8rem', textAlign: 'center' }}>Self Driving Car</Typography>
+            <CarRentalTwoToneIcon sx={{ fontSize: '70px', paddingLeft: '56rem', color: '#D8D8D8' }} />
             <Typography sx={{ color: '#525252', paddingTop: '10px', textAlign: 'center' }}>Hãy cho chúng tôi biết ý kiến của bạn bằng cách phản hồi hoặc liên hệ qua các thông tin của chúng tôi để giúp chúng tôi phát triển hơn trong tương lai</Typography>
             <Box
                 className="contact-img"
@@ -60,16 +60,16 @@ export default function Contact() {
 
                 {/* thông tin liên hệ */}
                 <div className="contactInfo">
-                    <Typography variant="h4">Contact Info</Typography><br/>
+                    <Typography variant="h4">Contact Info</Typography><br />
 
                     <Typography variant="h5">Address:</Typography>
-                    <Typography sx={{color:'#B4A5A5'}}>99 Nguyễn Huệ, phường Bến Nghé, Quận 1, TP. Hồ Chí Minh</Typography><br />
+                    <Typography sx={{ color: '#B4A5A5' }}>99 Nguyễn Huệ, phường Bến Nghé, Quận 1, TP. Hồ Chí Minh</Typography><br />
 
                     <Typography variant="h5">Phone:</Typography>
-                    <Typography sx={{color:'#B4A5A5'}}>0123-456-789</Typography><br />
+                    <Typography sx={{ color: '#B4A5A5' }}>0123-456-789</Typography><br />
 
                     <Typography variant="h5">Email:</Typography>
-                    <Typography sx={{color:'#B4A5A5'}}>RentCar@gmail.com</Typography><br />
+                    <Typography sx={{ color: '#B4A5A5' }}>RentCar@gmail.com</Typography><br />
 
                 </div>
 
@@ -77,11 +77,11 @@ export default function Contact() {
                 {/* Form gửi đơn liên hệ  */}
                 <div className="contactForm">
                     <form onSubmit={formik.handleSubmit}>
-                        <Typography sx={{textAlign:'center', paddingBottom:'20px'}} variant="h4">Contact Form</Typography>
+                        <Typography sx={{ textAlign: 'center', paddingBottom: '20px' }} variant="h4">Contact Form</Typography>
 
                         <div className="inputBox">
                             <TextField
-                                sx={{width:'30rem'}}
+                                sx={{ width: '30rem' }}
                                 name="fullname"
                                 value={formik.values.fullname}
                                 onChange={formik.handleChange}
@@ -92,7 +92,7 @@ export default function Contact() {
                         </div><br />
                         <div className="inputBox">
                             <TextField
-                                sx={{width:'30rem'}}
+                                sx={{ width: '30rem' }}
                                 name="email"
                                 value={formik.values.email}
                                 onChange={formik.handleChange}
@@ -103,7 +103,7 @@ export default function Contact() {
                         </div><br />
                         <div className="inputBox">
                             <TextField
-                                sx={{width:'30rem'}}
+                                sx={{ width: '30rem' }}
                                 name="phone"
                                 value={formik.values.phone}
                                 onChange={formik.handleChange}
@@ -144,7 +144,7 @@ export default function Contact() {
                         </div><br />
                         <div className="inputBox">
                             <TextField
-                                sx={{width:'30rem'}}
+                                sx={{ width: '30rem' }}
                                 name="text"
                                 value={formik.values.text}
                                 onChange={formik.handleChange}
@@ -155,13 +155,13 @@ export default function Contact() {
                                 helperText={formik.touched.text && formik.errors.text}
                             />
                         </div><br />
-                        
+
                         {
-                        user?.displayName ? <Button sx={{marginLeft:'13rem', marginBottom:'80px', background:'#E7B10A', color:'white'}} type="submit"><SendIcon sx={{paddingRight:'4px'}}/>Send</Button> 
-                        : 
-                        <Button sx={{marginLeft:'13rem',border:'1px solid black', marginBottom:'80px'}}><Link to='/loginpage' style={{ textDecoration: 'none' }}><SendIcon sx={{paddingRight:'4px'}}/>Send</Link></Button>
+                            user?.displayName ? <Button sx={{ marginLeft: '13rem', marginBottom: '80px', background: '#E7B10A', color: 'white' }} type="submit"><SendIcon sx={{ paddingRight: '4px' }} />Send</Button>
+                                :
+                                <Button sx={{ marginLeft: '13rem', border: '1px solid black', marginBottom: '80px' }}><Link to='/loginpage' style={{ textDecoration: 'none' }}><SendIcon sx={{ paddingRight: '4px' }} />Send</Link></Button>
                         }
-                        
+
                     </form>
                 </div>
             </div>
