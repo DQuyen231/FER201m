@@ -8,6 +8,7 @@ import Register from "./component/Register";
 import Contact from "./component/Contact";
 import Payment from "./component/Payment";
 import Footer from "./component/Footer";
+import History from "./component/HistoryApplication";
 
 // import Login from "./gg_login/Login";
 // import Protected from "./Protect/protected";
@@ -25,7 +26,7 @@ function App() {
           <Route path="/register" element={<Register />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
           <Route path="/payment" element={<Payment />}></Route>
-
+          <Route path="/viewhistory" element={<History />}></Route>
 
           {/* <Route path="/login" element={<Login />}></Route>
           <Route path="/dashboard" element={<Protected><Dashboard /></Protected>}></Route> */}

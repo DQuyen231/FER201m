@@ -34,6 +34,7 @@ export default function Navigation() {
                     <Button sx={{ color: 'black', fontSize: '20px', fontWeight: 'bold', marginLeft: '30px' }}>cars</Button>
                     <Button sx={{ color: 'black', fontSize: '20px', fontWeight: 'bold', marginLeft: '30px' }}>Active</Button>
                     <Button sx={{ color: 'black', fontSize: '20px', fontWeight: 'bold', marginLeft: '30px' }}><Link to='/contact' style={{ textDecoration: 'none' }}>Contact</Link></Button>
+                    <Button sx={{ color: 'black', fontSize: '20px', fontWeight: 'bold', marginLeft: '30px' }}><Link to='/viewhistory' style={{ textDecoration: 'none' }}>View History</Link></Button>
 
                     <div className='avatar'>{user?.displayName && <Avatar
                         aria-label="avatar"
