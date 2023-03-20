@@ -61,12 +61,17 @@ export default function Navigation() {
                             </MenuItem>
                         </Link>
                         <MenuItem onClick={handleClose}>Contact History</MenuItem>
+                        <Link to="/payment" style={{textDecoration:'none'}}>
+                            <MenuItem onClick={handleClose}>
+                                Payment
+                            </MenuItem>
+                        </Link>
                         
                     </Menu>
                     <div className='user-name'>{user?.displayName && <Typography sx={{ color: 'black' }}>{user.displayName}</Typography>}</div>
                     <div className='button-log'>
                         <ButtonGroup>
-                            {user?.displayName ? <Button onClick={handleSignOut}>Logout</Button> : <Button><Link to='/loginpage' style={{ textDecoration: 'none' }}>Login</Link></Button>}
+                            {user?.displayName ? <Button onClick={handleSignOut}>Log out</Button> : <Button><Link to='/loginpage' style={{ textDecoration: 'none' }}>Login</Link></Button>}
                         </ButtonGroup>
                     </div>
 
