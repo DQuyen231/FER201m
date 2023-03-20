@@ -43,7 +43,7 @@ export default function Home() {
             {/* phần header của trang */}
             <Typography variant="h2" sx={{ color: '#537FE7', paddingTop: '8rem', textAlign: 'center' }}>Self Driving Car</Typography>
             <CarRentalTwoToneIcon sx={{ fontSize: '70px', paddingLeft: '56rem', color: '#D8D8D8' }} />
-            <Box><ImageGallery slideDuration={500} items={images} showFullscreenButton={false} /></Box>
+            <ImageGallery items={images} showNav={false} showFullscreenButton={false} slideDuration={300}/>
 
             {/* phần body của trang */}
             <div className="body">
