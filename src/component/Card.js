@@ -1,12 +1,13 @@
 import React from "react";
-import { Col, Card } from "react-materialize";
+import { Box, Card, CardMedia, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 
 function Cards({ car }) {
   return (
     <>
-      <Card>
-        <Col>
+      <Box>
+          <Grid>
+            <Card>
           <Link to={`/booking/${car.id}`} className="card">
             <div className="item">
               <div className="avatarImg">
@@ -23,14 +24,11 @@ function Cards({ car }) {
                 </div>
               </div>
             </div>
-            <div>
-              <div className="skills">
-                <span className="info">{car.Type}</span>
-              </div>
-            </div>
           </Link>
-        </Col>
-      </Card>
+          </Card>
+          </Grid>
+        
+      </Box>
     </>
   );
 }

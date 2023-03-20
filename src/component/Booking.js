@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import { TextField, Button } from "@material-ui/core";
+import { TextField, Button } from "@mui/material";
 import { Field, Form, Formik } from "formik";
 import { object, string, bool } from "yup";
 import styles from "../css/car.module.css";
+import { useNavigate } from "react-router-dom";
+import { NotificationManager } from "react-notifications";
 import NotificationContainer from "react-notifications/lib/NotificationContainer";
 function Booking() {
+  const navigate = useNavigate();
   const [users, setUsers] = useState({
     name: "",
     email: "",
@@ -21,7 +24,8 @@ function Booking() {
   });
 
   const handleSubmit = (values, formikHelpers) => {
-    alert(JSON.stringify(values));
+    navigate("/payment");
+    NotificationManager.success("Booking success");
   };
 
   return (
@@ -42,12 +46,15 @@ function Booking() {
                 name: string()
                   .required("Please enter name")
                   .min(2, "Name too short"),
-                year: string()
-                  .required("Please enter year")
-                  .min(2, "cost too short"),
-                clip: string().required("Please enter clip"),
-                info: string().required("Please enter info"),
-                nation: string().required("Please enter message"),
+                from: string().required("Please enter from"),
+                to: string().required("Please enter to"),
+                time: string().required("Please enter time"),
+                date: string().required("Please enter date"),
+                email: string().required("Please enter email"),
+                adults: string().required("Please enter adults"),
+                children: string().required("Please enter children"),
+                message: string().required("Please enter message"),
+                nation: string().required("Please enter nation"),
                 famous: bool().oneOf([true], "You need to accept the famous"),
                 status: string(),
               })}
@@ -64,20 +71,20 @@ function Booking() {
                       as={TextField}
                       variant="outlined"
                       color="primary"
-                      label="name"
+                      label="Name"
                       fullWidth
                       style={{ marginBottom: "20px" }}
                       error={Boolean(errors.name) && Boolean(touched.name)}
                       helperText={Boolean(touched.name) && errors.name}
                     />
                     <div style={{ padding: "10px" }}></div>
-                    <Field
+<Field
                       name="email"
                       type="email"
                       as={TextField}
                       variant="outlined"
                       color="primary"
-                      label="email"
+                      label="Email"
                       fullWidth
                       style={{ marginBottom: "20px" }}
                       error={Boolean(errors.email) && Boolean(touched.email)}
@@ -117,7 +124,6 @@ function Booking() {
                     as={TextField}
                     variant="outlined"
                     color="primary"
-                    label="Time"
                     fullWidth
                     style={{ marginBottom: "20px" }}
                     error={Boolean(errors.time) && Boolean(touched.time)}
@@ -129,7 +135,6 @@ function Booking() {
                     as={TextField}
                     variant="outlined"
                     color="primary"
-                    label="Date"
                     fullWidth
                     style={{ marginBottom: "20px" }}
                     error={Boolean(errors.date) && Boolean(touched.date)}
@@ -144,7 +149,7 @@ function Booking() {
                     label="Nation"
                     fullWidth
                     style={{ marginBottom: "20px" }}
-                    error={Boolean(errors.nation) && Boolean(touched.nation)}
+error={Boolean(errors.nation) && Boolean(touched.nation)}
                     helperText={Boolean(touched.nation) && errors.nation}
                   />
                   <div style={{ display: "flex" }}>
@@ -167,7 +172,7 @@ function Booking() {
                       as={TextField}
                       variant="outlined"
                       color="primary"
-                      label="children"
+                      label="Children"
                       fullWidth
                       style={{ marginBottom: "20px" }}
                       error={
@@ -220,7 +225,7 @@ function Booking() {
           </div>
         </div>
       </div>
-      <NotificationContainer />
+<NotificationContainer />
     </div>
   );
 }
