@@ -26,14 +26,73 @@ export default function Navigation() {
     };
 
     return (
-        <div>
-            <AppBar sx={{ backgroundColor: "#D8D8D8" }}>
-                <Toolbar>
-                    <Button sx={{ color: 'black', marginLeft: '40rem', fontSize: '20px', fontWeight: 'bold', marginRight: '30px' }}><Link to='/' style={{ textDecoration: 'none' }}>Home</Link></Button>
-                    <Button sx={{ color: 'black', fontSize: '20px', fontWeight: 'bold' }}>About</Button>
-                    <Button sx={{ color: 'black', fontSize: '20px', fontWeight: 'bold', marginLeft: '30px' }}>cars</Button>
-                    <Button sx={{ color: 'black', fontSize: '20px', fontWeight: 'bold', marginLeft: '30px' }}>Active</Button>
-                    <Button sx={{ color: 'black', fontSize: '20px', fontWeight: 'bold', marginLeft: '30px' }}><Link to='/contact' style={{ textDecoration: 'none' }}>Contact</Link></Button>
+      <div>
+        <AppBar sx={{ backgroundColor: "#D8D8D8" }}>
+          <Toolbar>
+            <Button
+              sx={{
+                color: "black",
+                marginLeft: "40rem",
+                fontSize: "20px",
+                fontWeight: "bold",
+                marginRight: "30px",
+              }}
+            >
+              <Link to="/" style={{ textDecoration: "none" }}>
+                Home
+              </Link>
+            </Button>
+            <Button
+              sx={{ color: "black", fontSize: "20px", fontWeight: "bold" }}
+            >
+              About
+            </Button>
+            <Button
+              sx={{
+                color: "black",
+                fontSize: "20px",
+                fontWeight: "bold",
+                marginLeft: "30px",
+              }}
+            >
+              <Link to="/car" style={{ textDecoration: "none" }}>
+                Cars
+              </Link>
+            </Button>
+            <Button
+              sx={{
+                color: "black",
+                fontSize: "20px",
+                fontWeight: "bold",
+                marginLeft: "30px",
+              }}
+            >
+              Active
+            </Button>
+            <Button
+              sx={{
+                color: "black",
+                fontSize: "20px",
+                fontWeight: "bold",
+                marginLeft: "30px",
+              }}
+            >
+              <Link to="/contact" style={{ textDecoration: "none" }}>
+                Contact
+              </Link>
+            </Button>
+            <Button
+              sx={{
+                color: "black",
+                fontSize: "20px",
+                fontWeight: "bold",
+                marginLeft: "30px",
+              }}
+            >
+              <Link to="/viewhistory" style={{ textDecoration: "none" }}>
+                View History
+              </Link>
+            </Button>
 
                     <div className='avatar'>{user?.displayName && <Avatar
                         aria-label="avatar"
@@ -79,4 +138,57 @@ export default function Navigation() {
             </AppBar>
         </div>
     )
+            <div className="avatar">
+              {user?.displayName && (
+                <Avatar
+                  aria-label="avatar"
+                  onClick={handleClick}
+                  sx={{ cursor: "pointer" }}
+                  alt={user.displayName}
+                  src={user.photoURL}
+                />
+              )}
+            </div>
+            <Menu
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "left",
+              }}
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "left",
+              }}
+            >
+              <Link to="/contact" style={{ textDecoration: "none" }}>
+                <MenuItem onClick={handleClose}>Profile</MenuItem>
+              </Link>
+              <MenuItem onClick={handleClose}>Contact History</MenuItem>
+            </Menu>
+            <div className="user-name">
+              {user?.displayName && (
+                <Typography sx={{ color: "black" }}>
+                  {user.displayName}
+                </Typography>
+              )}
+            </div>
+            <div className="button-log">
+              <ButtonGroup>
+                {user?.displayName ? (
+                  <Button onClick={handleSignOut}>Logout</Button>
+                ) : (
+                  <Button>
+                    <Link to="/loginpage" style={{ textDecoration: "none" }}>
+                      Login
+                    </Link>
+                  </Button>
+                )}
+              </ButtonGroup>
+            </div>
+          </Toolbar>
+        </AppBar>
+      </div>
+    );
 }

@@ -8,9 +8,13 @@ import { Button, TextField, Select, MenuItem, FormControl, InputLabel } from '@m
 import { Link } from "react-router-dom";
 import CarRentalTwoToneIcon from '@mui/icons-material/CarRentalTwoTone';
 import SendIcon from '@mui/icons-material/Send';
+import { addApplication } from "../context/SendApplication";
+import { useDispatch } from 'react-redux';
+import { useSelector } from "react-redux";
 
 export default function Contact() {
-
+    const dispatch = useDispatch();
+    const listApplication = useSelector((state) => state.applications.value)
     const { user } = UserAuth();
 
     const listOfType =
@@ -30,7 +34,9 @@ export default function Contact() {
             text: ''
         },
 
-        onSubmit: values => {
+        onSubmit: (values) => {
+            // alert(JSON.stringify(formik.values))
+            dispatch(addApplication(values));
             console.log(values);
         },
 
@@ -42,8 +48,6 @@ export default function Contact() {
             text: Yup.string().required('Text is required').min(10, 'At least 10 characters').max(250, 'Text is too long!'),
         })
     })
-
-
 
 
     return (
@@ -157,7 +161,23 @@ export default function Contact() {
                         </div><br />
 
                         {
-                            user?.displayName ? <Button sx={{ marginLeft: '13rem', marginBottom: '80px', background: '#E7B10A', color: 'white' }} type="submit"><SendIcon sx={{ paddingRight: '4px' }} />Send</Button>
+                            user?.displayName ? <Button sx={{ marginLeft: '13rem', marginBottom: '80px', background: '#E7B10A', color: 'white' }} type="button"
+                                onClick={() => {
+                                    console.log( listApplication.length,
+                                         formik.values.fullname,
+                                         formik.values.email,
+                                         formik.values.phone,
+                                         formik.values.typeApplication,
+                                         formik.values.text,)
+                                    dispatch(addApplication({
+                                        id: listApplication.length,
+                                        fullname: formik.values.fullname,
+                                        email: formik.values.email,
+                                        phone: formik.values.phone,
+                                        typeApplication: formik.values.typeApplication,
+                                        text: formik.values.text,
+                                    }));
+                                }} ><SendIcon sx={{ paddingRight: '4px' }} />Send</Button>
                                 :
                                 <Button sx={{ marginLeft: '13rem', border: '1px solid black', marginBottom: '80px' }}><Link to='/loginpage' style={{ textDecoration: 'none' }}><SendIcon sx={{ paddingRight: '4px' }} />Send</Link></Button>
                         }
