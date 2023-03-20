@@ -9,6 +9,8 @@ import Contact from "./component/Contact";
 import Payment from "./component/Payment";
 import Footer from "./component/Footer";
 import History from "./component/HistoryApplication";
+import Car from "./component/Car";
+import Booking from "./component/Booking";
 
 // import Login from "./gg_login/Login";
 // import Protected from "./Protect/protected";
@@ -16,14 +18,15 @@ import History from "./component/HistoryApplication";
 function App() {
 
   return (
-
     <div className="App">
-      <AuthContextProvider> 
+      <AuthContextProvider>
         <Navigation />
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/loginpage" element={<Loginpage />}></Route>
           <Route path="/register" element={<Register />}></Route>
+          <Route path="/car" element={<Car />}></Route>
+          <Route path="/booking/:CarId" element={<Booking />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
           <Route path="/payment" element={<Payment />}></Route>
           <Route path="/viewhistory" element={<History />}></Route>
@@ -33,7 +36,6 @@ function App() {
         </Routes>
         <Footer />
       </AuthContextProvider>
-
     </div>
   );
 }

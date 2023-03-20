@@ -1,0 +1,107 @@
+.container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: calc(100vh - 80px);
+    position: relative;
+    z-index: 0;
+  }
+  
+  .register {
+    background: #fff;
+    border-radius: 16px;
+    -moz-box-shadow: 0 0 64px hsla(0, 0%, 4%, 0.15);
+    box-shadow: 0 0 64px hsl(0deg 0% 4% / 15%);
+    width: 784px;
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+    flex-shrink: 1;
+    max-width: 100%;
+    min-width: 0;
+  }
+  
+  .formRegister {
+    display: flex;
+    flex-flow: column;
+    flex-shrink: 1;
+    max-width: 100%;
+    min-width: 0;
+    padding: 30px 90px;
+    width: 100%;
+    align-items: center;
+  }
+  
+  .formRegisterEmail {
+    display: flex !important;
+    flex-flow: column;
+    flex-shrink: 1;
+    max-width: 100%;
+    min-width: 0;
+    padding: 30px 90px;
+    width: 100%;
+    align-items: center;
+  }
+  .title {
+    align-items: center;
+    display: flex;
+    flex-flow: row;
+    max-width: 100%;
+    min-width: 0;
+    margin-bottom: 16px;
+    margin-top: 0;
+    position: relative;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .title h1 {
+    font-weight: 700;
+    text-align: left;
+    font-size: 2rem;
+    height: 3rem;
+  }
+  .formRegister a,
+  button {
+    width: 100%;
+    margin-bottom: 16px;
+    margin-top: 0;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    align-items: center;
+    border-radius: 8px;
+    border-width: 0;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    flex-shrink: 1;
+    font-size: 0.875rem;
+    font-size: 1rem;
+    font-weight: 700;
+    height: 48px;
+    justify-content: center;
+    justify-items: center;
+    max-width: 100%;
+    min-width: 0;
+    outline: none !important;
+    padding: 0 21.5px;
+    text-align: center;
+    white-space: nowrap;
+  }
+  .recap {
+    margin-bottom: 16px;
+    margin-top: 0;
+    align-items: end;
+    flex-flow: row;
+    justify-content: center;
+  }
+  
+  .recap a {
+    font-size: 0.875rem;
+    font-weight: 700;
+    margin: 0 4px;
+    text-decoration: underline;
+    background: hsla(0, 0%, 100%, 0);
+    color: #202d3d;
+  }
+  
