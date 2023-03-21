@@ -45,7 +45,7 @@ export default function Loginpage() {
   },[user,Navigate])
 
   return (
-    <Container maxWidth="sm">
+    <Container className='login-design' maxWidth="sm">
       <Box
         sx={{
           display: 'flex',

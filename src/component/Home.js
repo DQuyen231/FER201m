@@ -41,9 +41,9 @@ export default function Home() {
         <div className="home-container">
 
             {/* phần header của trang */}
-            <Typography variant="h2" sx={{ color: '#537FE7', paddingTop: '8rem', textAlign: 'center' }}>Self Driving Car</Typography>
-            <CarRentalTwoToneIcon sx={{ fontSize: '70px', paddingLeft: '56rem', color: '#D8D8D8' }} />
-            <ImageGallery items={images} showNav={false} showFullscreenButton={false} slideDuration={300}/>
+            <Typography variant="h2" sx={{ color: '#E7B10A', paddingTop: '8rem', textAlign: 'center' }}>Self Driving Car</Typography>
+            <CarRentalTwoToneIcon sx={{ fontSize: '70px', paddingLeft: '56rem', color: '#D8D8D8'}} />
+            <ImageGallery items={images} showNav={false} showFullscreenButton={false} slideDuration={300} />
 
             {/* phần body của trang */}
             <div className="body">
@@ -76,6 +76,14 @@ export default function Home() {
                 <Box className="service4">
                     <Typography variant="h5" sx={{ textAlign: 'center', paddingTop: '10px', color: 'skyblue' }}>XE CHẠY THÁNG</Typography>
                     <Typography sx={{ textAlign: 'center', paddingTop: '50px' }}>Với mong muốn cung cấp những dịch vụ uy tín, Chúng tôi là công ty được thành lập từ lâu nhằm đáp ứng nhu cầu của khách hàng. Số lượng xe cung cấp cho dịch vụ cho thuê xe tháng là vô cùng lớn, sự đa dạng của các dòng xe từ 4 tới 7 chỗ.</Typography>
+                </Box>
+                <Box className="service5">
+                    <Typography variant="h5" sx={{ textAlign: 'center', paddingTop: '10px', color: 'skyblue' }}>CƯỚI HỎI</Typography>
+                    <Typography sx={{ textAlign: 'center', paddingTop: '50px' }}>Dịch vụ cho thuê xe cưới hỏi của chúng tôi với phong cách phục vụ chuyên nghiệp và thân thiện, giá cả cạnh tranh sẽ giúp bạn có một ngày cưới hoàn hảo, trọn vẹn. Chắc chắn quý khách sẽ không tìm được một dịch vụ nào tốt hơn dịch vụ của chúng tôi.</Typography>
+                </Box>
+                <Box className="service6">
+                    <Typography variant="h5" sx={{ textAlign: 'center', paddingTop: '10px', color: 'skyblue' }}>SÂN BAY</Typography>
+                    <Typography sx={{ textAlign: 'center', paddingTop: '50px' }}>Một trong những địa chỉ cung cấp dịch vụ thuê xe đưa đón sân bay chất lượng nhất hiện nay. Công ty chúng tôi cung cấp các loại xe đa dạng và giá cả hợp lý nhất. Với tiêu chí lợi ích khách hàng luôn đặt lên hàng đầu!</Typography>
                 </Box>
             </div>
         </div>

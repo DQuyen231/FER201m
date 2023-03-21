@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import { TextField, Button } from "@mui/material";
+import { TextField, Button, Typography } from "@mui/material";
 import { Field, Form, Formik } from "formik";
 import { object, string, bool } from "yup";
 import styles from "../css/car.module.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { NotificationManager } from "react-notifications";
-import NotificationContainer from "react-notifications/lib/NotificationContainer";
+
+
 function Booking() {
   const navigate = useNavigate();
+
   const [users, setUsers] = useState({
     name: "",
     email: "",
@@ -15,17 +17,18 @@ function Booking() {
     to: "",
     time: "",
     date: "",
-    comfort: "",
-    time: "",
+    comfort: false,
     adults: "",
     children: "",
     message: "",
     status: "save",
   });
 
+const {CarId} = useParams();
+console.log(CarId)
   const handleSubmit = (values, formikHelpers) => {
-    navigate("/payment");
-    NotificationManager.success("Booking success");
+    navigate(`/payment/${CarId}`);
+    NotificationManager.success("Submit success");
   };
 
   return (
@@ -36,7 +39,8 @@ function Booking() {
       >
         <div className={styles.formRegisterEmail}>
           <div className={styles.title}>
-            <h1>BOOKING FORM</h1>
+            <Typography variant="h3" sx={{textAlign:'center'}}>Booking Form</Typography>
+
           </div>
           <div className="MaterialForm">
             <Formik
@@ -55,7 +59,7 @@ function Booking() {
                 children: string().required("Please enter children"),
                 message: string().required("Please enter message"),
                 nation: string().required("Please enter nation"),
-                famous: bool().oneOf([true], "You need to accept the famous"),
+                comfort: bool().oneOf([true], "You need to accept the famous"),
                 status: string(),
               })}
               onSubmit={(values, formikHelpers) => {
@@ -78,7 +82,7 @@ function Booking() {
                       helperText={Boolean(touched.name) && errors.name}
                     />
                     <div style={{ padding: "10px" }}></div>
-<Field
+                    <Field
                       name="email"
                       type="email"
                       as={TextField}
@@ -149,7 +153,7 @@ function Booking() {
                     label="Nation"
                     fullWidth
                     style={{ marginBottom: "20px" }}
-error={Boolean(errors.nation) && Boolean(touched.nation)}
+                    error={Boolean(errors.nation) && Boolean(touched.nation)}
                     helperText={Boolean(touched.nation) && errors.nation}
                   />
                   <div style={{ display: "flex" }}>
@@ -195,7 +199,7 @@ error={Boolean(errors.nation) && Boolean(touched.nation)}
                   />
                   <div className={styles.recap} style={{ display: "flex" }}>
                     <Field
-                      name="famous"
+                      name="comfort"
                       type="checkbox"
                       color="primary"
                       style={{
@@ -205,10 +209,10 @@ error={Boolean(errors.nation) && Boolean(touched.nation)}
                         height: "23px",
                       }}
                     />
-                    <span>I agree</span>
+                    <Typography>I agree</Typography>
                   </div>
                   <div style={{ display: "flex", color: " #f44336" }}>
-                    {errors.famous && <span>{errors.famous}</span>}
+                    {errors.comfort && <span>{errors.comfort}</span>}
                   </div>
                   <Button
                     type="submit"
@@ -225,7 +229,6 @@ error={Boolean(errors.nation) && Boolean(touched.nation)}
           </div>
         </div>
       </div>
-<NotificationContainer />
     </div>
   );
 }

@@ -1,17 +1,40 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from 'yup'
 import '../css/PaymentCSS.css'
 import { Box, Button, FormControl, Grid, InputLabel, MenuItem, Select, Stack, TextField, Typography } from "@mui/material";
 import PaymentIcon from '@mui/icons-material/Payment';
+import NotificationContainer from "react-notifications/lib/NotificationContainer";
+import { useParams } from "react-router";
+import axios from "axios";
 
 
 export default function PayMent() {
+    const {CarId}  = useParams();
+    const [state, setState] = useState(null);
+    useEffect(() => {
+        const getAccountInfo = async () => {
+          axios({
+            method: "GET",
+            url: `https://6406e046862956433e5c53f4.mockapi.io/car/${CarId}`,
+          })
+            .then((res) => {
+            console.log("data",res.data);
+              setState(res.data);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        };
+        getAccountInfo();
+        // eslint-disable-next-line
+      }, []);
 
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
     const [month, setMonth] = useState('');
-
+    
+    console.log("this is payment page", CarId)
     const handleMonthChange = (event) => {
         setMonth(event.target.value);
     };
@@ -152,6 +175,8 @@ export default function PayMent() {
                 <Button sx={{ marginTop: '30px', marginBottom: '80px', marginLeft: '13rem', background: '#E7B10A', color: 'white' }} type="submit">Thanh Toán</Button>
                 </div>
             </form>
+            <Typography>Name: {state && state.carname}</Typography>
+            <NotificationContainer/>
         </div>
         </div>
     )

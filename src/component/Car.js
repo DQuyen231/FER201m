@@ -1,8 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Cards from "./Card";
+
+
 function Car() {
   const [state, setState] = useState(null);
+  console.log(state);
   useEffect(() => {
     const getAccountInfo = async () => {
       axios({
@@ -22,17 +25,17 @@ function Car() {
 
   return (
     <div style={{marginTop:"100px"}}>
-       <h2>Xe Ít Tiền</h2>
+       <h2>Lux</h2>
       <div className="containerHome">
-        {state && state.sort((a, b) => a.price - b.price).slice(0,3).map((car, index) => <Cards car={car} key={index} />)}
+        {state && state.filter((a) => a.Type === "Luxury").slice(0,3).map((car, index) => <Cards car={car} key={index} />)}
       </div>
-      <h2>Xe Nhiều Tiền</h2>
+      <h2>Standard</h2>
       <div className="containerHome">
-        {state && state.sort((a, b) => b.price - a.price).slice(0,3).map((car, index) => <Cards car={car} key={index} />)}
+        {state && state.filter((a) => a.Type === "Standard").slice(0,3).map((car, index) => <Cards car={car} key={index} />)}
       </div>
-      <h2>Xe Vừa Tiền</h2>
+      <h2>Economy</h2>
       <div className="containerHome">
-        {state && state.slice(0,3).map((car, index) => <Cards car={car} key={index} />)}
+        {state && state.filter((a) => a.Type === "Economy").slice(0,3).map((car, index) => <Cards car={car} key={index} />)}
       </div>
     </div>
   );
