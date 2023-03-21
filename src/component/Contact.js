@@ -49,6 +49,7 @@ export default function Contact() {
     })
 
     const checkDisabled = (fullname, email, phone, typeApplication, text) => {
+        console.log(fullname, email, phone, typeApplication, text)
         if (fullname !== '' && email !== '' && phone !== '' && typeApplication!== '' && text !== '') {
             return false;
         } else {
@@ -96,6 +97,7 @@ export default function Contact() {
                                 name="fullname"
                                 value={formik.values.fullname}
                                 onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
                                 label="Full Name"
                                 error={formik.touched.fullname && Boolean(formik.errors.fullname)}
                                 helperText={formik.touched.fullname && formik.errors.fullname}
@@ -107,6 +109,7 @@ export default function Contact() {
                                 name="email"
                                 value={formik.values.email}
                                 onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
                                 label="Email"
                                 error={formik.touched.email && Boolean(formik.errors.email)}
                                 helperText={formik.touched.email && formik.errors.email}
@@ -118,6 +121,7 @@ export default function Contact() {
                                 name="phone"
                                 value={formik.values.phone}
                                 onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
                                 label="Phone"
                                 error={formik.touched.phone && Boolean(formik.errors.phone)}
                                 helperText={formik.touched.phone && formik.errors.phone}
@@ -160,6 +164,7 @@ export default function Contact() {
                                 name="text"
                                 value={formik.values.text}
                                 onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
                                 label="Type your Message"
                                 multiline
                                 rows={4}

@@ -10,7 +10,7 @@ function Cards({ car }) {
   return (
     <>
       <Box>
-          {user?.displayName ? <Link to={`/booking/${car.id}`} className="card">
+          <Link to={`/booking/${car.id}`} className="card">
             <div className="item">
               <div className="avatarImg">
                 <img src={car.carImages} alt={car.carImages} />
@@ -27,22 +27,7 @@ function Cards({ car }) {
               </div>
             </div>
           </Link>
-           :
-          <Link to='/loginpage'><div className="item">
-              <div className="avatarImg">
-                <img src={car.carImages} alt={car.carImages} />
-              </div>
-              <div className="advisor" style={{ justifyContent: "flex-end" }}>
-                <div className="profile">
-                  <Link to="#" className="name">
-                    {car.carname}
-                  </Link>
-                  <div>
-                    <span className="info">price: {car.price}</span>
-                  </div>
-                </div>
-              </div>
-            </div></Link>}
+          
       </Box>
     </>
   );
