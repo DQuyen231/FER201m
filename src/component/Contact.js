@@ -35,7 +35,6 @@ export default function Contact() {
         },
 
         onSubmit: (values) => {
-            // alert(JSON.stringify(formik.values))
             dispatch(addApplication(values));
             console.log(values);
         },
@@ -49,15 +48,23 @@ export default function Contact() {
         })
     })
 
+    const checkDisabled = (fullname, email, phone, typeApplication, text) => {
+        if (fullname !== '' && email !== '' && phone !== '' && typeApplication!== '' && text !== '') {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
 
     return (
         <div className="contact">
-            <Typography variant="h2" sx={{ color: '#537FE7', paddingTop: '8rem', textAlign: 'center' }}>Self Driving Car</Typography>
+            <Typography variant="h2" sx={{ color: '#E7B10A', paddingTop: '8rem', textAlign: 'center' }}>Self Driving Car</Typography>
             <CarRentalTwoToneIcon sx={{ fontSize: '70px', paddingLeft: '56rem', color: '#D8D8D8' }} />
             <Typography sx={{ color: '#525252', paddingTop: '10px', textAlign: 'center' }}>Hãy cho chúng tôi biết ý kiến của bạn bằng cách phản hồi hoặc liên hệ qua các thông tin của chúng tôi để giúp chúng tôi phát triển hơn trong tương lai</Typography>
             <Box
                 className="contact-img"
-                width='70%'
+                width='100vw'
                 height='60vh'
                 component='img' src='https://thuexehcm.vn/wp-content/uploads/2019/06/banner-image1-1024x554.jpg' />
             <div className="container">
@@ -118,7 +125,7 @@ export default function Contact() {
                         </div><br />
                         <div className="inputBox">
                             <FormControl fullWidth>
-                                <InputLabel id="format-label">Choose one</InputLabel>
+                                <InputLabel sx={{paddingRight:'22rem'}} id="format-label">Choose one</InputLabel>
                                 <Select
 
                                     style={{ width: '30rem' }}
@@ -134,6 +141,7 @@ export default function Contact() {
                                     <MenuItem
                                         disabled
                                         value='0'
+                                        
                                     >
                                         Please select
                                     </MenuItem>
@@ -161,14 +169,14 @@ export default function Contact() {
                         </div><br />
 
                         {
-                            user?.displayName ? <Button sx={{ marginLeft: '13rem', marginBottom: '80px', background: '#E7B10A', color: 'white' }} type="button"
+                            user?.displayName ? <Button sx={{  marginBottom: '80px', background: '#E7B10A', color: 'white' }} type="button"
+                            disabled={checkDisabled(
+                                formik.values.fullname,
+                                formik.values.email,
+                                formik.values.phone,
+                                formik.values.typeApplication,
+                                formik.values.text )}
                                 onClick={() => {
-                                    console.log( listApplication.length,
-                                         formik.values.fullname,
-                                         formik.values.email,
-                                         formik.values.phone,
-                                         formik.values.typeApplication,
-                                         formik.values.text,)
                                     dispatch(addApplication({
                                         id: listApplication.length,
                                         fullname: formik.values.fullname,
@@ -179,7 +187,7 @@ export default function Contact() {
                                     }));
                                 }} ><SendIcon sx={{ paddingRight: '4px' }} />Send</Button>
                                 :
-                                <Button sx={{ marginLeft: '13rem', border: '1px solid black', marginBottom: '80px' }}><Link to='/loginpage' style={{ textDecoration: 'none' }}><SendIcon sx={{ paddingRight: '4px' }} />Send</Link></Button>
+                                <Button sx={{  marginBottom: '80px', background: '#E7B10A', color: 'white' }}><Link to='/loginpage' style={{ textDecoration: 'none' }}><SendIcon sx={{ paddingRight: '4px' }} />Send</Link></Button>
                         }
 
                     </form>
