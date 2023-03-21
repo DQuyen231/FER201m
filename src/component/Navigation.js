@@ -39,7 +39,7 @@ export default function Navigation() {
             }}
           >
             <Link to="/" style={{ textDecoration: "none", color: 'black' }}>
-              Home
+              Main
             </Link>
           </Button>
           <Button
