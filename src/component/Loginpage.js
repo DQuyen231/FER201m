@@ -79,7 +79,7 @@ export default function Loginpage() {
           id="password"
           autoComplete="current-password"
         />
-        <Typography>you don't have accout yet ? click here to <Link to='/register'>Register Now</Link></Typography>
+        <Typography>you don't have accout yet ? click here to <Link to='/register' style={{color:'gold'}}>Register Now</Link></Typography>
         <Button
           type="submit"
           fullWidth

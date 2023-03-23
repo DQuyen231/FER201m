@@ -30,7 +30,7 @@ export default function Register() {
   }, [user, Navigate])
 
   return (
-    <Container maxWidth="sm">
+    <Container sx={{height:'100vh'}} maxWidth="sm">
       <Box
         sx={{
           display: 'flex',
@@ -40,7 +40,7 @@ export default function Register() {
         }}
       >
         <h1>Register</h1>
-        <Typography>you already have a accout yet ? click here to <Link to='/loginpage'>Login Now</Link></Typography>
+        <Typography>you already have a accout yet ? click here to <Link to='/loginpage' style={{color:'gold'}}>Login Now</Link></Typography>
         <form onSubmit={handleSubmit}>
           <TextField
             onChange={(e) => setEmail(e.target.value)}
