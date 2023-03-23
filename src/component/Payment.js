@@ -16,7 +16,7 @@ export default function PayMent() {
     const { CarId } = useParams();
     const [state, setState] = useState(null);
     useEffect(() => {
-        const getAccountInfo = async () => {
+        const getAccountInfo = () => {
             axios({
                 method: "GET",
                 url: `https://6406e046862956433e5c53f4.mockapi.io/car/${CarId}`,
