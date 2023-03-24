@@ -7,16 +7,13 @@ import PaymentIcon from '@mui/icons-material/Payment';
 import NotificationContainer from "react-notifications/lib/NotificationContainer";
 import { useNavigate, useParams } from "react-router";
 import axios from "axios";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
 
 export default function PayMent() {
     const navigate = useNavigate();
     const { CarId } = useParams();
     const [state, setState] = useState(null);
     useEffect(() => {
-        const getAccountInfo = async () => {
+        const getAccountInfo = () => {
             axios({
                 method: "GET",
                 url: `https://6406e046862956433e5c53f4.mockapi.io/car/${CarId}`,
@@ -53,18 +50,19 @@ export default function PayMent() {
 
         onSubmit: (values) => {
             console.log(values)
-            toast.success('Đặt xe thành công!');
+            window.alert('Đặt xe thành công!')
             navigate('/');
         },
 
-        validateSchema: Yup.object({
-            fullname: Yup.string().required('Fullname is required').min(5, 'At least 5 characters').max(50, 'Fullname is too long!'),
-            city: Yup.string().required('Fullname is required').min(5, 'At least 5 characters').max(30, `City's name is too long`),
-            state: Yup.string().required('Fullname is required').min(5, 'At least 5 characters').max(30, `State's name is too long!`),
-            nameOnCard: Yup.string().required('Fullname is required').min(5, 'At least 5 characters').max(30, `Name on card is too long!`),
-            cardNumber: Yup.number().required('Fullname is required').min(5, 'At least 5 characters').max(30, `number is too long!`)
+        validationSchema: Yup.object({
+            fullname: Yup.string().required('Fullname is required').min(3, 'At least 5 characters').max(50, 'Fullname is too long!'),
+            city: Yup.string().required('city is required').min(1, 'At least 5 characters').max(30, `City's name is too long`),
+            address: Yup.string().required('address is required').min(5, 'At least 5 characters').max(30, `State's name is too long!`),
+            nameOnCard: Yup.string().required('nameOnCard is required').min(3, 'At least 5 characters').max(30, `Name on card is too long!`),
+            cardNumber: Yup.number().required('cardNumber is required').min(1, 'At least 5 characters').max(999999999999999999999, `number is too long!`)
         })
     });
+    
 
     const checkDisabled = (fullname, city, address, nameOnCard, cardNumber) => {
         console.log(fullname, city, address, nameOnCard, cardNumber)
@@ -82,20 +80,21 @@ export default function PayMent() {
             <Typography sx={{ textAlign: 'center', fontSize: '30px', fontWeight: 'bold', color: '#B2B2B2' }}>Payment</Typography>
             <Typography sx={{ textAlign: 'center' }}>vui lòng kiểm tra kĩ thông tin chi tiết đơn hàng trước khi xác nhận thanh toán.</Typography>
             <div className="container">
-                <form className="form" action="" onSubmit={formik.handleSubmit}>
+                <form className="form" onSubmit={formik.handleSubmit}>
                     <Box className="col1">
                         <h3 className="title">billing address</h3>
                         <Stack>
                         <TextField
-                                sx={{ width: '35rem' }}
+                                label="Full Name"
+                                variant="outlined"
+                                placeholder="Nguyễn Văn A"
                                 name="fullname"
                                 value={formik.values.fullname}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
-                                label="Full Name"
                                 error={formik.touched.fullname && Boolean(formik.errors.fullname)}
                                 helperText={formik.touched.fullname && formik.errors.fullname}
-                            /><br/>
+                            /><br />
 
                             <TextField
                                 label="City"

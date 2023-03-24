@@ -43,14 +43,14 @@ export default function Contact() {
             fullname: Yup.string().required('Fullname is required').min(5, 'At least 5 characters').max(50, 'Fullname is too long!'),
             email: Yup.string().required('Email required').email('Invalid email address').min(11, 'At least 5 characters').max(70, 'Email is too long!'),
             phone: Yup.number().required('Phone is required').integer('Invalid phone!').min(10000, 'Min 5 digits!').max(999999999999, 'Max 12 digits!'),
-            typeApplication: Yup.string().oneOf(listOfType, "Invalid! Please try again."),
+            typeApplication: Yup.string().required('This field need to choose one, can not empty').oneOf(listOfType, "Invalid! Please try again."),
             text: Yup.string().required('Text is required').min(10, 'At least 10 characters').max(250, 'Text is too long!'),
         })
     })
 
     const checkDisabled = (fullname, email, phone, typeApplication, text) => {
         console.log(fullname, email, phone, typeApplication, text)
-        if (fullname !== '' && email !== '' && phone !== '' && typeApplication!== '' && text !== '') {
+        if (fullname !== '' && email !== '' && phone !== '' && typeApplication !== '' && text !== '') {
             return false;
         } else {
             return true;
@@ -129,7 +129,7 @@ export default function Contact() {
                         </div><br />
                         <div className="inputBox">
                             <FormControl fullWidth>
-                                <InputLabel sx={{paddingRight:'22rem'}} id="format-label">Choose one</InputLabel>
+                                <InputLabel sx={{ paddingRight: '22rem' }} id="format-label">Choose one</InputLabel>
                                 <Select
 
                                     style={{ width: '30rem' }}
@@ -140,12 +140,14 @@ export default function Contact() {
                                     value={formik.values.typeApplication}
                                     onChange={formik.handleChange}
                                     onBlur={formik.handleBlur}
+                                    error={formik.touched.typeApplication && Boolean(formik.errors.typeApplication)}
+                                    helperText={formik.touched.typeApplication && formik.errors.typeApplication}
 
                                 >
                                     <MenuItem
                                         disabled
                                         value='0'
-                                        
+
                                     >
                                         Please select
                                     </MenuItem>
@@ -153,9 +155,6 @@ export default function Contact() {
                                         <MenuItem key={index} value={typeApplication} >{typeApplication}</MenuItem>
                                     )}
                                 </Select>
-                                {formik.errors.typeApplication && (
-                                    <p className='contact-error'>{formik.errors.typeApplication}</p>
-                                )}
                             </FormControl>
                         </div><br />
                         <div className="inputBox">
@@ -174,13 +173,13 @@ export default function Contact() {
                         </div><br />
 
                         {
-                            user?.displayName ? <Button sx={{  marginBottom: '80px', background: '#E7B10A', color: 'white' }} type="button"
-                            disabled={checkDisabled(
-                                formik.values.fullname,
-                                formik.values.email,
-                                formik.values.phone,
-                                formik.values.typeApplication,
-                                formik.values.text )}
+                            user?.displayName ? <Button sx={{ marginBottom: '80px', background: '#E7B10A', color: 'white' }} type="button"
+                                disabled={checkDisabled(
+                                    formik.values.fullname,
+                                    formik.values.email,
+                                    formik.values.phone,
+                                    formik.values.typeApplication,
+                                    formik.values.text)}
                                 onClick={() => {
                                     dispatch(addApplication({
                                         id: listApplication.length,
@@ -192,7 +191,7 @@ export default function Contact() {
                                     }));
                                 }} ><SendIcon sx={{ paddingRight: '4px' }} />Send</Button>
                                 :
-                                <Button sx={{  marginBottom: '80px', background: '#E7B10A', color: 'white' }}><Link to='/loginpage' style={{ textDecoration: 'none' }}><SendIcon sx={{ paddingRight: '4px' }} />Send</Link></Button>
+                                <Button sx={{ marginBottom: '80px', background: '#E7B10A', color: 'white' }}><SendIcon sx={{ paddingRight: '4px' }}/><Link to='/loginpage' style={{ textDecoration: 'none', color:'white' }}>Send</Link></Button>
                         }
 
                     </form>

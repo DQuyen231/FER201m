@@ -14,7 +14,6 @@ import '../css/HistoryApplication.css';
 export default function History() {
     const dispatch = useDispatch();
     const listApplication = useSelector((state) => state.applications.value)
-    console.log(listApplication)
     const reversed = [...listApplication].reverse();
 
     return (
