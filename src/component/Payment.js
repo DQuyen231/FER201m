@@ -7,9 +7,6 @@ import PaymentIcon from '@mui/icons-material/Payment';
 import NotificationContainer from "react-notifications/lib/NotificationContainer";
 import { useNavigate, useParams } from "react-router";
 import axios from "axios";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
 
 export default function PayMent() {
     const navigate = useNavigate();
@@ -53,16 +50,16 @@ export default function PayMent() {
 
         onSubmit: (values) => {
             console.log(values)
-            toast.success('Đặt xe thành công!');
+            window.alert('Đặt xe thành công!')
             navigate('/');
         },
 
         validationSchema: Yup.object({
-            fullname: Yup.string().required('Fullname is required').min(5, 'At least 5 characters').max(50, 'Fullname is too long!'),
+            fullname: Yup.string().required('Fullname is required').min(3, 'At least 5 characters').max(50, 'Fullname is too long!'),
             city: Yup.string().required('city is required').min(1, 'At least 5 characters').max(30, `City's name is too long`),
             address: Yup.string().required('address is required').min(5, 'At least 5 characters').max(30, `State's name is too long!`),
-            nameOnCard: Yup.string().required('nameOnCard is required').min(5, 'At least 5 characters').max(30, `Name on card is too long!`),
-            cardNumber: Yup.number().required('cardNumber is required').min(5, 'At least 5 characters').max(30, `number is too long!`)
+            nameOnCard: Yup.string().required('nameOnCard is required').min(3, 'At least 5 characters').max(30, `Name on card is too long!`),
+            cardNumber: Yup.number().required('cardNumber is required').min(1, 'At least 5 characters').max(999999999999999999999, `number is too long!`)
         })
     });
     
